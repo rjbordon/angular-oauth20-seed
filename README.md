@@ -1,8 +1,15 @@
-# angular-seed — the seed for AngularJS apps
+# angular-oauth20-seed — the seed for AngularJS apps with OAuth2.0 sign-in support
 
 This project is an application skeleton for a typical [AngularJS](http://angularjs.org/) web app.
 You can use it to quickly bootstrap your angular webapp projects and dev environment for these
 projects.
+
+This is for those who need the implementation of a light-weight sign-in functionality. Thus a
+social provider, such as Google or Facebook, can help you to provide this requirement with no major
+effort by letting you to put focus in the core of your business. Here you'll working some concepts of the
+[OAuth2.0 RFC](http://tools.ietf.org/html/rfc6749), thus this app follows the [implicit grant](http://tools.ietf.org/html/rfc6749#section-4.2) flow
+as being a client-side only app. At the moment of writing, this app support sign-in user with Google,
+for more information about how this Identity provider, IDP support this functionality can be find [here](https://developers.google.com/accounts/docs/OAuth2UserAgent).
 
 The seed contains AngularJS libraries, test libraries and a bunch of scripts all preconfigured for
 instant web development gratification. Just clone the repo (or download the zip/tarball), start up
@@ -19,9 +26,9 @@ sandbox implementation varies between browsers, but quite often prevents things 
 etc to function properly when an html page is opened via `file://` scheme instead of `http://`._
 
 
-## How to use angular-seed
+## How to use angular-oauth20-seed
 
-Clone the angular-seed repository and start hacking...
+Clone the angular-oauth20-seed repository and start hacking...
 
 
 ### Running the app during development
@@ -33,6 +40,13 @@ You can pick one of these options:
 
 Then navigate your browser to `http://localhost:<port>/app/index.html` to see the app running in
 your browser.
+
+#### Configuring the app
+
+For running this app and interacting with Google, you'll need to go to the [Google Cloud Console](https://cloud.google.com/console)
+and registering there a new application. There are two required steps you need to perform here:
+* register a redirect URI, in this case: `http://localhost:<port>/app/dashboard.html`
+* grab the google client id assigned to your app and replace the string `YOUR_GOOGLE_OAUTH20_CLIENT_ID` located `app/configurations.js` with this
 
 
 ### Running the app in production
@@ -77,31 +91,17 @@ Requires a webserver, node.js + `./scripts/web-server.js` or your backend server
   * run the tests from console with [Protractor](https://github.com/angular/protractor) via
     `scripts/e2e-test.sh` (on windows: `scripts\e2e-test.bat`)
 
-### Continuous Integration
-
-CloudBees have provided a CI/deployment setup:
-
-<a href="https://grandcentral.cloudbees.com/?CB_clickstart=https://raw.github.com/CloudBees-community/angular-js-clickstart/master/clickstart.json"><img src="https://d3ko533tu1ozfq.cloudfront.net/clickstart/deployInstantly.png"/></a>
-
-If you run this, you will get a cloned version of this repo to start working on in a private git repo, 
-along with a CI service (in Jenkins) hosted that will run unit and end to end tests in both Firefox and Chrome.
-
-### Receiving updates from upstream
-
-When we upgrade angular-seed's repo with newer angular or testing library code, you can just
-fetch the changes and merge them into your project with git.
-
-
 ## Directory Layout
 
     app/                --> all of the files to be used in production
       css/              --> css files
         app.css         --> default stylesheet
       img/              --> image files
-      index.html        --> app layout file (the main html template file of the app)
-      index-async.html  --> just like index.html, but loads js files asynchronously
+      dashboard.html    --> app layout file (the main html template file of the app)
+      index.html        --> html file
       js/               --> javascript files
         app.js          --> application
+        configurations.js --> application configurations
         controllers.js  --> application controllers
         directives.js   --> application directives
         filters.js      --> custom angular filters

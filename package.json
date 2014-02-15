@@ -1,7 +1,7 @@
 {
-  "name": "angularjs-seed",
-  "description": "A starter project for AngularJS",
-  "repository": "https://github.com/angular/angular-seed",
+  "name": "angular-oauth20-seed",
+  "description": "A starter project for AngularJS app with sign-in with OAuth2.0 support",
+  "repository": "https://github.com/rjbordon/angular-oauth20-seed",
   "devDependencies": {
     "phantomjs" : "~1.9",
     "karma" : "~0.10",
